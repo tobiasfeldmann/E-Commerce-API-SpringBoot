@@ -9,10 +9,16 @@ public class CartServices{
     @Autowired
     private CartRepository cartRepository;
 
-    public Cart createCart(Cart cart) {
-        Cart cartDB = this.cartRepository.save(cart);
-
+    public CartItem createCartItem(CartRequestItem cartRequestItem) {
+        CartItem cartDB = new CartItem(cartRequestItem);
+        cartRepository.save(cartDB);
         return cartDB;
+    }
+
+    public CartItem updateCart(CartItem cartItem, CartRequestItem cartRequestItem) {
+        cartItem.setAnzahl(cartRequestItem.getAnzahl());
+        this.cartRepository.save(cartItem);
+        return cartItem;            
     }
     
 }

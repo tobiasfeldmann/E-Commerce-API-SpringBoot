@@ -1,9 +1,12 @@
 package com.example.ECommerce;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Customer {
@@ -16,7 +19,12 @@ public class Customer {
 
     private String nachname;
 
-    
+    @OneToMany(mappedBy = "kunde")
+    private List<CartItem> cartItems;
+
+    public List<CartItem> getCartItems(){
+        return this.cartItems;
+    }
 
     public String getVorname() {
         return this.vorname;

@@ -1,9 +1,12 @@
 package com.example.ECommerce;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Artikel {
@@ -13,8 +16,15 @@ public class Artikel {
     private int artikelID;
 
     private String artikelBezeichnung;
+    
+    private int price;
 
-    private int anzahl;
+    @OneToMany(mappedBy = "artikel")
+    private List<CartItem> cartItems;
+
+    public List<CartItem> getCartItems() {
+        return this.cartItems;
+    }
 
     public int getArtikelID() {
         return this.artikelID;
@@ -22,14 +32,6 @@ public class Artikel {
 
     public void setArtikelID(int id) {
         this.artikelID = id;
-    }
-
-    public int getAnzahl() {
-        return this.anzahl;
-    }
-
-    public void setAnzahl(int anzahl) {
-        this.anzahl = anzahl;
     }
 
     public String getArtikelbezeichnung() {

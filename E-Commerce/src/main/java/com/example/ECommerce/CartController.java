@@ -1,7 +1,6 @@
 package com.example.ECommerce;
 
 import java.util.List;
-import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,17 +25,23 @@ public class CartController {
         this.cartRepository = cartRepository;
     }
 
-    @GetMapping("")
-    public List<Cart> cart() {
+    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
+    public List<CartItem> cart() {
         return cartRepository.findAll();
     }
 
-    @PostMapping (//consumes = {MediaType.APPLICATION_JSON_VALUE},
-                    //produces = {MediaType.APPLICATION_JSON_VALUE}
-                    "/create")
-    public ResponseEntity<Cart> createCart(@RequestBody Cart cart) {
-        Cart cartDB = this.cartServices.createCart(cart);
+    @PostMapping ("/create")
+    public ResponseEntity<CartItem> createCart(@RequestBody CartRequestItem cartRequestItem) {
+        CartItem cartDB;
+        
+        List<CartItem> items = cartRepository.findByKundenIDAndArtikelID(cartRequestItem.getKundenID(), cartRequestItem.getArtikelID());
+        if(items.size() > 0){
+            cartDB = this.cartServices.updateCart(items.get(0), cartRequestItem);
+        }
+        else{
+            cartDB = this.cartServices.createCartItem(cartRequestItem);
+        }
 
-        return new ResponseEntity<Cart>(cart, HttpStatus.OK);
+        return new ResponseEntity<CartItem>(cartDB, HttpStatus.OK);
     }
 }
