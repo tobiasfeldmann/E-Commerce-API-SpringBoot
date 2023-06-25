@@ -1,26 +1,46 @@
 package com.example.ECommerce;
 
-import java.io.Serializable;
+import com.example.ECommerce.entities.Artikel;
+import com.example.ECommerce.entities.Customer;
 
-public class CartItemId implements Serializable {
-    private int kundenID;
-    private int artikelID;
+public class CartItemId {
+    
+    private Artikel article;
+    private Customer customer;
 
-    public int getKundenID() {
-        return this.kundenID;
+    public CartItemId() {
+
     }
 
-    public void setKundenID(int kundenID) {
-        this.kundenID = kundenID;
+    /**
+     * Konstruktor, erstellt aus zwei Instanzen der Klasse artikel und customer eine Instanz
+     * dient der Auflistung verschiedener Einträge bzw. Positionen in einem Warenkorb
+     * Zuordnung zu dem Kunden per KundenID möglich
+     * @param artikel
+     * @param customer
+     */
+    public CartItemId(Artikel artikel, Customer customer){
+        this.article = artikel;
+        this.customer = customer;
     }
 
-    public int getArtikelID() {
-        return this.artikelID;
+
+    public Artikel getArticle() {
+        return this.article;
     }
 
-    public void setArtikelID(int artikelID) {
-        this.artikelID = artikelID;
+    public void setArticle(Artikel artikel) {
+        this.article = artikel;
     }
+
+    public Customer getCustomer() {
+        return this.customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     
 }
 
