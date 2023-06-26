@@ -25,18 +25,34 @@ public class CartItemId {
     }
 
 
+    /**
+     * Get Methode für den Artikel des CartItem
+     * @return Instanz der Klasse Artikel
+     */
     public Artikel getArticle() {
         return this.article;
     }
 
+    /**
+     * Set Methode für den Artikel des CartItem
+     * @param artikel, Instanz der Klasse Artikel
+     */
     public void setArticle(Artikel artikel) {
         this.article = artikel;
     }
 
+    /**
+     * Get Methode für den Customer des CartItem
+     * @return Instanz der Klasse Customer
+     */
     public Customer getCustomer() {
         return this.customer;
     }
 
+    /**
+     * Set Methode für den Customer des CartItem
+     * @param customer, Instanz der Klasse Customer
+     */
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }

@@ -6,7 +6,11 @@ public class CartItemResponse {
     public int articleId;
     public int customerId;
     public int amount;
+    public float positionPrice;
 
+    /**
+     * Default Konstruktor
+     */
     public CartItemResponse() {
     }
 
@@ -18,5 +22,7 @@ public class CartItemResponse {
         articleId = item.getArticle().getArticleId();
         customerId = item.getCustomer().getCustomerId();
         amount = item.getAmount();
+        float singlePrice = item.getArticle().getArticlePrice();
+        positionPrice = CartItem.calculatePositionPrice(amount, singlePrice);
     }
 }

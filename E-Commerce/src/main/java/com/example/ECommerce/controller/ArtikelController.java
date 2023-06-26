@@ -15,12 +15,16 @@ public class ArtikelController {
     
     private ArtikelRepository artikelRepository;
 
+    /**
+     * weißt der Instanz eine übergebene Instanz der Klasse Artikel Repository zu
+     * @param artikelRepository
+     */
     public ArtikelController(ArtikelRepository artikelRepository) {
         this.artikelRepository = artikelRepository;
     }
 
     /**
-     * Get Request für die URL endung /artikel liefert alle Artikel der DB
+     * Get Request für die URL Endung '/artikel' liefert alle Artikel aus der DB
      * @return
      */
     @GetMapping("")

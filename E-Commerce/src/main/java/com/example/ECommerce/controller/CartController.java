@@ -23,12 +23,13 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/cart")
 public class CartController {
+    
     private CartRepository cartRepository;
     private ArtikelRepository articleRepository;
     private CustomerRepository customerRepository;
 
     /**
-     * Konstruktor für ein neuen CartController mit den nötigen Repositories
+     * Konstruktor für einen neuen CartController mit den nötigen Repositories
      * @param cartRepository
      * @param articleRepository
      * @param customerRepository
@@ -40,7 +41,7 @@ public class CartController {
     }
 
     /**
-     * Get Request der URL Endung /cart liefert alle Carts der DB
+     * Get Request der URL Endung '/cart' liefert alle Carts aus der DB
      * @return
      */
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -49,8 +50,8 @@ public class CartController {
     }
 
     /**
-     * Methode, die je nach übergebenen Werten und vorhandensein in der DB ein Objekt aktualisiert, erstellt oder löscht
-     * @param cartRequestItem, die im Post Request verwendeteten Werte für das Objekt
+     * Methode, die je nach übergebenen Werten und Vorhandensein in der DB ein Objekt aktualisiert, erstellt oder löscht
+     * @param cartRequestItem, die im Post-Request verwendeten Werte für das Objekt
      * @return ResponseEntity, ein CartItemResponse, das die gesendeten Werte zurückgibt
      */
     @PostMapping
@@ -60,20 +61,31 @@ public class CartController {
             customerRepository.getReferenceById(cartRequestItem.customerId)
         );
         Optional<CartItem> item = cartRepository.findById(id);
+        /**
+         * Exisitert das Item bzw. die Instanz mit der ID bereits in der DB und ist die Menge größer 0 wird das Item in der DB aktualisiert
+         */
         if(item.isPresent() && cartRequestItem.amount != 0){
             item.get().setAmount(cartRequestItem.amount);
+            item.get().setPositionPrice(CartItem.calculatePositionPrice(item.get().getAmount(), id.getArticle().getArticlePrice()));
             CartItem result = cartRepository.save(item.get());
             return new ResponseEntity<CartItemResponse>(new CartItemResponse(result), HttpStatus.OK);
         }
+        /**
+         * Existiert die Instanz in der DB und ist die Menge = 0 wird die CartItemInstanz aus der DB gelöscht
+         */
         else if(item.isPresent() && cartRequestItem.amount == 0) {
             cartRepository.delete(item.get());
             return new ResponseEntity<CartItemResponse>(new CartItemResponse(), HttpStatus.ACCEPTED);
         }
+        /**
+         * Erstellt eine Instanz in der DB sollte diese nicht vorhandensein
+         */
         else{
             CartItem newItem = new CartItem();
             newItem.setAmount(cartRequestItem.amount);
             newItem.setArticle(id.getArticle());
             newItem.setCustomer(id.getCustomer());
+            newItem.setPositionPrice(CartItem.calculatePositionPrice(newItem.getAmount(), id.getArticle().getArticlePrice()));
             CartItem result = cartRepository.save(newItem);
             return new ResponseEntity<CartItemResponse>(new CartItemResponse(result), HttpStatus.CREATED);
         }

@@ -15,10 +15,18 @@ public class CustomerController {
     
     private CustomerRepository customerRepository;
 
+    /**
+     * Weist der Instanz der Klasse Customer Controller ein übergebenes CustomerRepository zu
+     * @param customerRepository
+     */
     public CustomerController(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
+    /**
+     * Get-Request liefert alle in der DB gespeicherten Kunden zurück
+     * @return
+     */
     @GetMapping("")
     public List<Customer> getAll(){
         return customerRepository.findAll();
