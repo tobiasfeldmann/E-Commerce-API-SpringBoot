@@ -3,6 +3,10 @@ package com.example.ECommerce;
 import com.example.ECommerce.entities.Artikel;
 import com.example.ECommerce.entities.Customer;
 
+/**
+ * Dient als ID Class für CartItem.
+ * Identifizierung des CartItems über die Customer ID und Article ID
+ */
 public class CartItemId {
     
     private Artikel article;

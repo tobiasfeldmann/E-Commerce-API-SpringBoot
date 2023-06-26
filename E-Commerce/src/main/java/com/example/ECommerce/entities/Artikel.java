@@ -6,7 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-
+/**
+ * Stellt einen Artikel mit einer eindeutigen Artikel ID, einem Preis sowie einer Beschreibung dar.
+ */
 @Entity
 public class Artikel {
 

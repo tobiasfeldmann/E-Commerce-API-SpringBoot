@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.ECommerce.entities.Artikel;
 import com.example.ECommerce.repositories.ArtikelRepository;
 
+/**
+ * Controller für Request der URL Endung '/artikel'
+ */
 @RestController
 @RequestMapping("/artikel")
 public class ArtikelController {

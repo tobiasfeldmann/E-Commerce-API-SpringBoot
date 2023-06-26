@@ -7,6 +7,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+/**
+ * Stellt einen Kunden mit einer eindeutigen KundenID, sowie Vor- und Nachnamen dar
+ */
 @Entity
 public class Customer {
     /**

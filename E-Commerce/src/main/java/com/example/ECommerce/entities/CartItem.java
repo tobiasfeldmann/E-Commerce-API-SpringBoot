@@ -34,35 +34,70 @@ public class CartItem {
     @Column(name = "position_price")
     private float positionPrice;
 
+    
+    /** 
+     * Get Methode für den Customer
+     * @return Customer, Instanz der Klasse Customer
+     */
     public Customer getCustomer() {
         return this.customer;
     }
 
+    
+    /** 
+     * Set Methode für den Customer
+     * @param customer, Instanz der Klasse Custoemr
+     */
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
     
+    
+    /** 
+     * Get Methode des Artikels
+     * @return Artikel, Instanz der Klasse Artikel
+     */
     public Artikel getArticle() {
         return this.article;
     }
 
+    /**
+     * Set Methode für den Artikel
+     * @param artikel, Instanz der Klasse Artikel
+     */
     public void setArticle(Artikel artikel) {
         this.article = artikel;
     }
 
+    /**
+     * Get Methode für die Anzahl
+     * @return jeweilige Anzahl des Artikels
+     */
     public int getAmount() {
         return this.amount;
     }
 
+    /**
+     * Set Methode für die Anzahl
+     * @param amount, neuer Wert für die Anzahl
+     */
     public void setAmount(int amount) {
         this.amount = amount;
     } 
 
+    /**
+     * Get Methode für den Positions Preis bzw. Preis pro Mengeneinheit
+     * @return Preis pro Mengeneinheit des entsprechenden Artikels
+     */
     public float getPositionPrice() {
         return this.positionPrice;
     }
 
+    /**
+     * Set Methode für den Preis pro Mengeneinheit
+     * @param price, neuer Wert für den Preis pro Mengeneinheit
+     */
     public void setPositionPrice(float price) {
         this.positionPrice = price;
     }

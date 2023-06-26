@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.ECommerce.entities.Customer;
 import com.example.ECommerce.repositories.CustomerRepository;
 
+/**
+ * Controller für die URL Endung '/customer'
+ * Arbeitet mit dem CustomerRepository um in der DB gespeicherte Kunden auszugeben.
+ */
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {

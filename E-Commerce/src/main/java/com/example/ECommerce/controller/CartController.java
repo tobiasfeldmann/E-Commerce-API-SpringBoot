@@ -20,6 +20,10 @@ import com.example.ECommerce.repositories.CartRepository;
 import com.example.ECommerce.repositories.CustomerRepository;
 import java.util.Optional;
 
+/**
+ * Controller für Requests der URL Endung '/cart'
+ * Verarbeitet CartItemResponse und liefert als Antwort auf einen Request ein CartItemResponse
+ */
 @RestController
 @RequestMapping("/cart")
 public class CartController {
@@ -27,6 +31,7 @@ public class CartController {
     private CartRepository cartRepository;
     private ArtikelRepository articleRepository;
     private CustomerRepository customerRepository;
+
 
     /**
      * Konstruktor für einen neuen CartController mit den nötigen Repositories
