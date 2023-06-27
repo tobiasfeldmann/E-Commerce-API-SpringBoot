@@ -15,7 +15,7 @@ import com.example.ECommerce.CartItemId;
 import com.example.ECommerce.contracts.CartItemRequest;
 import com.example.ECommerce.contracts.CartItemResponse;
 import com.example.ECommerce.entities.CartItem;
-import com.example.ECommerce.repositories.ArtikelRepository;
+import com.example.ECommerce.repositories.ArticleRepository;
 import com.example.ECommerce.repositories.CartRepository;
 import com.example.ECommerce.repositories.CustomerRepository;
 import java.util.Optional;
@@ -29,7 +29,7 @@ import java.util.Optional;
 public class CartController {
     
     private CartRepository cartRepository;
-    private ArtikelRepository articleRepository;
+    private ArticleRepository articleRepository;
     private CustomerRepository customerRepository;
 
 
@@ -39,7 +39,7 @@ public class CartController {
      * @param articleRepository
      * @param customerRepository
      */
-    public CartController(CartRepository cartRepository, ArtikelRepository articleRepository, CustomerRepository customerRepository) {
+    public CartController(CartRepository cartRepository, ArticleRepository articleRepository, CustomerRepository customerRepository) {
         this.cartRepository = cartRepository;
         this.articleRepository = articleRepository;
         this.customerRepository = customerRepository;
@@ -47,7 +47,7 @@ public class CartController {
 
     /**
      * Get Request der URL Endung '/cart' liefert alle Carts aus der DB
-     * @return
+     * @return Liste mit allen CartItems in der DB
      */
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
     public List<CartItem> cart() {
@@ -59,7 +59,7 @@ public class CartController {
      * @param cartRequestItem, die im Post-Request verwendeten Werte für das Objekt
      * @return ResponseEntity, ein CartItemResponse, das die gesendeten Werte zurückgibt
      */
-    @PostMapping
+    @PostMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<CartItemResponse> createCart(@RequestBody CartItemRequest cartRequestItem) {
         CartItemId id = new CartItemId(
             articleRepository.getReferenceById(cartRequestItem.articleId),

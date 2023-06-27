@@ -1,6 +1,6 @@
 package com.example.ECommerce;
 
-import com.example.ECommerce.entities.Artikel;
+import com.example.ECommerce.entities.Article;
 import com.example.ECommerce.entities.Customer;
 
 /**
@@ -9,7 +9,7 @@ import com.example.ECommerce.entities.Customer;
  */
 public class CartItemId {
     
-    private Artikel article;
+    private Article article;
     private Customer customer;
 
     public CartItemId() {
@@ -17,32 +17,32 @@ public class CartItemId {
     }
 
     /**
-     * Konstruktor, erstellt aus zwei Instanzen der Klasse artikel und customer eine Instanz
+     * Konstruktor, erstellt aus zwei Instanzen der Klasse Article und Customer eine Instanz
      * dient der Auflistung verschiedener Einträge bzw. Positionen in einem Warenkorb
      * Zuordnung zu dem Kunden per KundenID möglich
-     * @param artikel
+     * @param article
      * @param customer
      */
-    public CartItemId(Artikel artikel, Customer customer){
-        this.article = artikel;
+    public CartItemId(Article article, Customer customer){
+        this.article = article;
         this.customer = customer;
     }
 
 
     /**
      * Get Methode für den Artikel des CartItem
-     * @return Instanz der Klasse Artikel
+     * @return Instanz der Klasse Article
      */
-    public Artikel getArticle() {
+    public Article getArticle() {
         return this.article;
     }
 
     /**
      * Set Methode für den Artikel des CartItem
-     * @param artikel, Instanz der Klasse Artikel
+     * @param article, Instanz der Klasse Article
      */
-    public void setArticle(Artikel artikel) {
-        this.article = artikel;
+    public void setArticle(Article article) {
+        this.article = article;
     }
 
     /**

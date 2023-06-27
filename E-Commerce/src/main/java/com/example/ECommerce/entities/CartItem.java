@@ -26,7 +26,7 @@ public class CartItem {
     @Id
     @ManyToOne
     @JoinColumn(name = "articleId")
-    private Artikel article;
+    private Article article;
 
     @Column(name = "amount")
     private int amount;
@@ -56,18 +56,18 @@ public class CartItem {
     
     /** 
      * Get Methode des Artikels
-     * @return Artikel, Instanz der Klasse Artikel
+     * @return article, Instanz der Klasse Article
      */
-    public Artikel getArticle() {
+    public Article getArticle() {
         return this.article;
     }
 
     /**
      * Set Methode für den Artikel
-     * @param artikel, Instanz der Klasse Artikel
+     * @param article, Instanz der Klasse Article
      */
-    public void setArticle(Artikel artikel) {
-        this.article = artikel;
+    public void setArticle(Article article) {
+        this.article = article;
     }
 
     /**
@@ -88,7 +88,7 @@ public class CartItem {
 
     /**
      * Get Methode für den Positions Preis bzw. Preis pro Mengeneinheit
-     * @return Preis pro Mengeneinheit des entsprechenden Artikels
+     * @return Preis pro Mengeneinheit des entsprechenden Artikel
      */
     public float getPositionPrice() {
         return this.positionPrice;
@@ -103,7 +103,7 @@ public class CartItem {
     }
 
     /**
-     * Berechnet den Preis für die einzelne Position bzw. für ein CartItem zu einer jeweiligen ArtikelID
+     * Berechnet den Preis für die einzelne Position bzw. für ein CartItem zu einer jeweiligen articleID
      * @param amount, anzahl der Position
      * @param price, Preis des Artikels pro Stück
      * @return

@@ -2,6 +2,7 @@ package com.example.ECommerce.controller;
 
 import java.util.List;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +32,7 @@ public class CustomerController {
      * Get-Request liefert alle in der DB gespeicherten Kunden zurück
      * @return
      */
-    @GetMapping("")
+    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
     public List<Customer> getAll(){
         return customerRepository.findAll();
     }

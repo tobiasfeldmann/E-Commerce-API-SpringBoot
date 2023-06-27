@@ -7,26 +7,26 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 /**
- * Stellt einen Artikel mit einer eindeutigen Artikel ID, einem Preis sowie einer Beschreibung dar.
+ * Stellt einen article mit einer eindeutigen article ID, einem Preis sowie einer Beschreibung dar.
  */
 @Entity
-public class Artikel {
+public class Article {
 
     /**
-     * einzigartige Nummer zur Identifikation des Artikels in der DB
+     * einzigartige Nummer zur Identifikation des articles in der DB
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int articleId;
 
     /**
-     * Artikel Beschreibung 
+     * article Beschreibung 
      */
     @Column(name = "article_description")
     private String articleDescription;
 
     /**
-     * Preis des Artikels pro Stück ggf. pro anderweitig festgelegter Mengeneinheit
+     * Preis des articles pro Stück ggf. pro anderweitig festgelegter Mengeneinheit
      */
     @Column(name = "article_price")
     private float articlePrice;
@@ -40,7 +40,7 @@ public class Artikel {
     }
 
     /**
-     * Set Methode für den Artikel preis
+     * Set Methode für den Artikelpreis
      * @param price, neuer Preis für den Artikel
      */
     public void setArticlePrice(float price) {
@@ -57,7 +57,7 @@ public class Artikel {
 
     /**
      * Set Methode für die Artikel ID
-     * @param id, neue ID des Artikels
+     * @param id, neue ID des Artikel
      */
     public void setArticleId(int id) {
         this.articleId = id;
