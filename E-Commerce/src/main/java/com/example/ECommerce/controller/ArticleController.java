@@ -20,7 +20,7 @@ public class ArticleController {
     private ArticleRepository articleRepository;
 
     /**
-     * weißt der Instanz eine übergebene Instanz der Klasse Article Repository zu
+     * weist dem ArticleController eine übergebene Instanz der Klasse Article Repository zu
      * @param ArticleRepository, Instanz der Klasse ArticleRepository
      */
     public ArticleController(ArticleRepository articleRepository) {
